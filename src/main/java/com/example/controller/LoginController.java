@@ -68,6 +68,17 @@ public class LoginController {
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
+
+	@RequestMapping(value="/admin/ferrari", method = RequestMethod.GET)
+	public ModelAndView alexisren(){
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("adminMessage","This is another page");
+		modelAndView.setViewName("admin/ferrari");
+		return modelAndView;
+	}
 	
 
 }
